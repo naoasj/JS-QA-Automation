@@ -1,0 +1,23 @@
+{
+  "name": "js-qa-automation",
+  "version": "1.0.0",
+  "description": "Cypress/Playwright course",
+  "homepage": "https://github.com/naoasj/JS-QA-Automation#readme",
+  "bugs": {
+    "url": "https://github.com/naoasj/JS-QA-Automation/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/naoasj/JS-QA-Automation.git"
+  },
+  "license": "ISC",
+  "author": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2"
+  }
+}
