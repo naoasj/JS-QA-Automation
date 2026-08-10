@@ -15,4 +15,4 @@ const handleNum = (numb, evenCallback, oddCallback) => {
 };
 
 handleNum(5, checkEven, checkOdd)
-
+handleNum(4, checkEven, checkOdd)
