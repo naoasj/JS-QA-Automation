@@ -1,0 +1,47 @@
+name: Jest API Tests
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+jobs:
+  api-tests:
+    name: Run Jest API tests
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v7
+
+      - name: Set up Node.js
+        uses: actions/setup-node@v7
+        with:
+          node-version: 22
+          cache: npm
+
+      - name: Install dependencies
+        run: npm ci
+
+      - name: Run Jest tests
+        run: npm run test:report
+        env:
+          BASE_URL: ${{ vars.BASE_URL }}
+          API_USERNAME: ${{ secrets.API_USERNAME }}
+          API_PASSWORD: ${{ secrets.API_PASSWORD }}
+
+      - name: Upload HTML report
+        if: always()
+        uses: actions/upload-artifact@v6
+        with:
+          name: jest-html-report
+          path: html-report/report.html
+          if-no-files-found: warn
+          retention-days: 7
